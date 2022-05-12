@@ -1,10 +1,17 @@
 import './App.css';
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import { Home } from './pages/home';
+import { About } from './pages/about';
+
 
 const App = () => {
   return (
-    <div className="App">
-      login app start
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/pages/about" element={<About />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
