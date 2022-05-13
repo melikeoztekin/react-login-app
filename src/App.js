@@ -3,6 +3,8 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 import { Form } from './pages/Form';
 import { Userlist } from './pages/Userlist';
 import { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   const [usersList, setUsersList] = useState([{
@@ -30,20 +32,17 @@ const App = () => {
   const userSearch = (email, password) => {
     let userFilter = usersList.filter(user => user.email === email && user.password === password)
     if (userFilter.length !== 0) {
-      alert("giriş başarılı")
-
+      toast.success(`Giriş başarılı`)
       navigate("/pages/Userlist")
-      setTimeout(() => {
-        setUsersList([...usersList, {
-          id: usersList.length + 1,
-          name_surname: userFilter[0].name_surname,
-          email: userFilter[0].email,
-          password: userFilter[0].password
-        }])
-      }, 1000);
+      setUsersList([...usersList, {
+        id: usersList.length + 1,
+        name_surname: userFilter[0].name_surname,
+        email: userFilter[0].email,
+        password: userFilter[0].password
+      }]);
 
     } else {
-      alert("kullanıcı adı şifre bulunamadı")
+      toast.error("Kullanıcı adı veya şifre hatalı")
     }
   }
 
@@ -51,6 +50,7 @@ const App = () => {
 
   return (
     <>
+      <ToastContainer position='bottom-right' />
       <Routes>
         <Route path="/" element={<Form userSearch={userSearch} />} />
         <Route path="/pages/Userlist" element={<Userlist usersList={usersList} />} />
