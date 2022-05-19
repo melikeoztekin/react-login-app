@@ -27,7 +27,7 @@ const App = () => {
     let userFilter = tasks.data.filter(user => user.email === email && user.first_name === password)
 
     if (userFilter.length !== 0) {
-      toast.success(`Giriş başarılı`)
+      toast.success(`Login successful.`)
       navigate("/pages/Userlist")
       setTasks([...tasks, {
         avatar: userFilter.avatar,
@@ -36,7 +36,7 @@ const App = () => {
         last_name: userFilter.last_name,
       }]);
     } else {
-      toast.error("Kullanıcı adı veya şifre hatalı")
+      toast.error("Username or password is wrong.")
     }
   }
 

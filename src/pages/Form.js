@@ -28,13 +28,13 @@ const Form = (props) => {
                     variant="h1"
                     style={{ fontSize: 24, color: '#000000', marginBottom: 20 }}
                 >
-                    Giriş ekranı
+                    Login
                 </Typography>
 
                 <form>
                     <TextField
                         id="outlined-basic"
-                        label="eposta adresi"
+                        label="E-mail address"
                         variant="outlined"
                         style={{ marginBottom: 20 }}
                         type="email"
@@ -44,7 +44,7 @@ const Form = (props) => {
                     />
                     <TextField
                         id="outlined-basic"
-                        label="sifre"
+                        label="Password"
                         variant="outlined"
                         style={{ marginBottom: 20 }}
                         type="password"
@@ -53,7 +53,7 @@ const Form = (props) => {
                         onChange={formik.handleChange}
                     />
                     <br />
-                    <Button onClick={() => props.userSearch(formik.values.email, formik.values.password)} variant="outlined" type="button" >Giriş yap</Button>
+                    <Button onClick={() => props.userSearch(formik.values.email, formik.values.password)} variant="outlined" type="button" >Login</Button>
                 </form>
             </Grid>
         </Grid>
