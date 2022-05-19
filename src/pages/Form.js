@@ -3,9 +3,8 @@ import { Grid, Typography, Button } from "@mui/material";
 import TextField from '@mui/material/TextField';
 import { useFormik } from 'formik';
 
-
-
 const Form = (props) => {
+
     const formik = useFormik({
         initialValues: {
             email: "",
@@ -14,7 +13,7 @@ const Form = (props) => {
         enableReinitialize: true,
         onSubmit: (values, { setSubmitting }) => {
             alert(JSON.stringify(values))
-        },
+        }
     }
     )
 

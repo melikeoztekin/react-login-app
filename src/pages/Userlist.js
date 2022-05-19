@@ -19,22 +19,20 @@ const Userlist = (props) => {
                 <Table sx={{ minWidth: 200 }} aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell align="right">User ID</TableCell>
-                            <TableCell align="right">User Name</TableCell>
-                            <TableCell align="right">User Email</TableCell>
-                            <TableCell align="right">User Password</TableCell>
+                            <TableCell align="center"></TableCell>
+                            <TableCell align="center">User Name</TableCell>
+                            <TableCell align="center">User Email</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {props.usersList.map((row) => (
                             <TableRow
-                                key={row.name}
+                                key={row.id}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
-                                <TableCell align="right">{row.id}</TableCell>
-                                <TableCell align="right">{row.name_surname}</TableCell>
-                                <TableCell align="right">{row.email}</TableCell>
-                                <TableCell align="right">{row.password}</TableCell>
+                                <TableCell align="center"><img src={row.avatar} alt="" /></TableCell>
+                                <TableCell align="center">{row.first_name} {row.last_name}</TableCell>
+                                <TableCell align="center">{row.email}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
