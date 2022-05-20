@@ -10,7 +10,7 @@ import axios from 'axios';
 
 const App = () => {
 
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState({});
   useEffect(() => {
     const fetchTasks = async () => {
       const { data } = await axios.get(
@@ -29,12 +29,24 @@ const App = () => {
     if (userFilter.length !== 0) {
       toast.success(`Login successful.`)
       navigate("/pages/Userlist")
-      setTasks([...tasks, {
-        avatar: userFilter.avatar,
-        email: userFilter.email,
-        first_name: userFilter.first_name,
-        last_name: userFilter.last_name,
-      }]);
+      setTasks({
+        data: [
+          ...tasks.data,
+          {
+            id: tasks.total + 1,
+            avatar: userFilter[0].avatar,
+            email: userFilter[0].email,
+            first_name: userFilter[0].first_name,
+            last_name: userFilter[0].last_name,
+          }
+        ]
+        // ,
+        // page: tasks.page,
+        // per_page: tasks.per_page,
+        // support: tasks.support,
+        // total: tasks.total + 1,
+        // total_pages: tasks.total_pages
+      });
     } else {
       toast.error("Username or password is wrong.")
     }
